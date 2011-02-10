@@ -34,4 +34,9 @@
 		<jiraProjectName>LUTECE</jiraProjectName>
 		<jiraComponentId>10042</jiraComponentId>
 	</properties>
+    <scm>
+        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/system</connection>
+        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/system</developerConnection>
+        <url>http://dev.lutece.paris.fr/viewvc/portal/trunk/plugins/system</url>
+    </scm>
 </project>
