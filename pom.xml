@@ -31,8 +31,8 @@
 	
 	<properties>
 		<componentName>systeminfo</componentName>
-		<jiraProjectName>LUTECE</jiraProjectName>
-		<jiraComponentId>10042</jiraComponentId>
+		<jiraProjectName>SYSTEMINFO</jiraProjectName>
+		<jiraComponentId>10181</jiraComponentId>
 	</properties>
     <scm>
         <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/system/plugin-systeminfo</connection>
