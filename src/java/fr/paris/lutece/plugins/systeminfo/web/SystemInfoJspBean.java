@@ -34,6 +34,8 @@
 package fr.paris.lutece.plugins.systeminfo.web;
 
 import fr.paris.lutece.portal.service.database.AppConnectionService;
+import fr.paris.lutece.portal.service.datastore.CoreDataKeys;
+import fr.paris.lutece.portal.service.datastore.DatastoreService;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.portal.web.admin.PluginAdminPageJspBean;
 import fr.paris.lutece.util.html.HtmlTemplate;
@@ -70,6 +72,7 @@ public class SystemInfoJspBean extends PluginAdminPageJspBean
     private static final String MARK_FREE_MEMORY = "runtime_freeMemory";
     private static final String MARK_MAX_MEMORY = "runtime_maxMemory";
     private static final String MARK_POOLS_INFOS = "pools_list";
+    private static final String MARK_STARTUP_DATE = "startup_date";
 
     //Properties
     private static final String PROPERTY_JAVA_VERSION = "java.version";
@@ -117,6 +120,8 @@ public class SystemInfoJspBean extends PluginAdminPageJspBean
         model.put( MARK_FREE_MEMORY, Runtime.getRuntime(  ).freeMemory(  ) );
         model.put( MARK_MAX_MEMORY, Runtime.getRuntime(  ).maxMemory(  ) );
 
+        model.put( MARK_STARTUP_DATE,  getStartupDate() );
+        
         model.put( MARK_POOLS_INFOS, AppConnectionService.getPoolManager(  ).getPoolsInfos(  ) );
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_MANAGE_SYSTEMINFO, getLocale(  ), model );
@@ -134,5 +139,10 @@ public class SystemInfoJspBean extends PluginAdminPageJspBean
         System.gc(  );
 
         return getHomeUrl( request );
+    }
+    
+    private String getStartupDate()
+    {
+        return DatastoreService.getDataValue(CoreDataKeys.KEY_STARTUP_TIME, "");
     }
 }
