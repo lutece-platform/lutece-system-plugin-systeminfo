@@ -1,13 +1,26 @@
-<div class="well">
-    <img src="${icon}" class="thumblist"/>
-    <a href="${url}" >
-        #i18n{systeminfo.systeminfo_dashboard.memory}
-    </a> : ${memory} <br />
-    <img src="images/admin/skin/plugins/systeminfo/connections.png" class="thumblist"/>
-    <a href="${url}" >
-        #i18n{systeminfo.systeminfo_dashboard.connections}
-    </a> : 
-    <#list connections as connection>
-        ${connection.code} : ${connection.name} <br />
-    </#list>
+<div class="small-box bg-red">
+	<div class="inner">
+		<h3>${memory}</h3>
+        <p> #i18n{systeminfo.systeminfo_dashboard.memory}</p>
+    </div>
+    <div class="icon">
+		<i class="fa fa-tasks"></i>
+    </div>
+    <a href="${url}" class="small-box-footer">
+		  #i18n{systeminfo.systeminfo_dashboard.memory}<i class="fa fa-arrow-circle-right"></i>
+    </a>
+</div>
+<div class="small-box bg-red">
+	<div class="inner">
+		<#list connections as connection>
+			<h3>${connection.name} </h3>
+			<p>${connection.code} #i18n{systeminfo.systeminfo_dashboard.connections}</p>
+		</#list>
+    </div>
+    <div class="icon">
+		<i class="fa fa-database"></i>
+    </div>
+    <a href="${url}" class="small-box-footer">
+		  #i18n{systeminfo.systeminfo_dashboard.connections}<i class="fa fa-arrow-circle-right"></i>
+    </a>
 </div>
