@@ -40,6 +40,7 @@ import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.portal.web.admin.PluginAdminPageJspBean;
 import fr.paris.lutece.util.html.HtmlTemplate;
 
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Properties;
 
@@ -63,6 +64,7 @@ public class SystemInfoJspBean extends PluginAdminPageJspBean
     private static final String MARK_JAVA_VM_VERSION = "java_vm_version";
     private static final String MARK_JAVA_VM_VENDOR = "java_vm_vendor";
     private static final String MARK_JAVA_VM_NAME = "java_vm_name";
+    private static final String MARK_JAVA_VM_DEFAULT_CHARSET = "java_vm_default_charset";
     private static final String MARK_JAVA_SPECIFICATION_VERSION = "java_specification_version";
     private static final String MARK_JAVA_SPECIFICATION_VENDOR = "java_specification_vendor";
     private static final String MARK_JAVA_SPECIFICATION_NAME = "java_specification_name";
@@ -123,6 +125,8 @@ public class SystemInfoJspBean extends PluginAdminPageJspBean
         model.put( MARK_STARTUP_DATE,  getStartupDate() );
         
         model.put( MARK_POOLS_INFOS, AppConnectionService.getPoolManager(  ).getPoolsInfos(  ) );
+
+        model.put( MARK_JAVA_VM_DEFAULT_CHARSET, Charset.defaultCharset().toString());
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_MANAGE_SYSTEMINFO, getLocale(  ), model );
 
