@@ -44,6 +44,7 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Properties;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -75,6 +76,7 @@ public class SystemInfoJspBean extends PluginAdminPageJspBean
     private static final String MARK_MAX_MEMORY = "runtime_maxMemory";
     private static final String MARK_POOLS_INFOS = "pools_list";
     private static final String MARK_STARTUP_DATE = "startup_date";
+    private static final String MARK_CONTAINER_INFO = "container_info";
 
     //Properties
     private static final String PROPERTY_JAVA_VERSION = "java.version";
@@ -100,7 +102,7 @@ public class SystemInfoJspBean extends PluginAdminPageJspBean
      * @param request The Http request
      * @return the html code of information system
      */
-    public String getSystemInfo( HttpServletRequest request )
+    public String getSystemInfo( HttpServletRequest request, ServletContext application )
     {
         Properties properties = System.getProperties(  );
 
@@ -127,6 +129,8 @@ public class SystemInfoJspBean extends PluginAdminPageJspBean
         model.put( MARK_POOLS_INFOS, AppConnectionService.getPoolManager(  ).getPoolsInfos(  ) );
 
         model.put( MARK_JAVA_VM_DEFAULT_CHARSET, Charset.defaultCharset().toString());
+
+        model.put( MARK_CONTAINER_INFO, application.getServerInfo() );
 
         HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_MANAGE_SYSTEMINFO, getLocale(  ), model );
 

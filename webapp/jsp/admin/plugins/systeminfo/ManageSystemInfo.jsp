@@ -4,6 +4,6 @@
 <jsp:useBean id="systeminfo" scope="session" class="fr.paris.lutece.plugins.systeminfo.web.SystemInfoJspBean" />
 
 <% systeminfo.init( request , systeminfo.RIGHT_SYSTEMINFO_MANAGEMENT ); %>
-<%= systeminfo.getSystemInfo( request )%>
+<%= systeminfo.getSystemInfo( request, application )%>
 
 <%@include file="../../AdminFooter.jsp" %>
