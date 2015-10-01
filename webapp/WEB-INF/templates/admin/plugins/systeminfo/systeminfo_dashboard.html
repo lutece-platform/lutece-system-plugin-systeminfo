@@ -1,3 +1,4 @@
+<!--
 <div class="small-box bg-red">
 	<div class="inner">
 		<h3>${memory}</h3>
@@ -10,7 +11,8 @@
 		  #i18n{systeminfo.systeminfo_dashboard.memory}<i class="fa fa-arrow-circle-right"></i>
     </a>
 </div>
-<div class="small-box bg-red">
+
+<div class="small-box bg-red dyn-info">
 	<div class="inner">
 		<#list connections as connection>
 			<h3>${connection.name}</h3>
@@ -23,4 +25,30 @@
     <a href="${url}" class="small-box-footer">
 		  #i18n{systeminfo.systeminfo_dashboard.connections}<i class="fa fa-arrow-circle-right"></i>
     </a>
+</div>
+-->
+<div class="info-box bg-red box-widget">
+  <span class="info-box-icon"><i class="fa fa-tasks"></i></span>
+  <div class="info-box-content">
+    <span class="info-box-text">#i18n{systeminfo.systeminfo_dashboard.memory}</span>
+    <span class="info-box-number">${memory}</span>
+    <div class="progress">
+      <div class="progress-bar" style="width:0%"></div>
+    </div>
+    <span class="progress-description">#i18n{systeminfo.systeminfo_dashboard.memory}</span>
+  </div>
+</div>
+<div class="info-box bg-red box-widget">
+  <span class="info-box-icon"><i class="fa fa-database"></i></span>
+  <div class="info-box-content">
+    	<#list connections as connection>
+				<span class="info-box-text">  ${connection.name}</span>
+				<span class="info-box-number">${connection.code}</span>
+			</#list>
+		</span>
+
+    <span class="progress-description">
+		  #i18n{systeminfo.systeminfo_dashboard.connections}
+    </span>
+  </div>
 </div>
