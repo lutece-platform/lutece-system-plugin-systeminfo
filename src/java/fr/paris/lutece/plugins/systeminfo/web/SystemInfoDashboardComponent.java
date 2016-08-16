@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2016, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,6 @@ import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.util.html.HtmlTemplate;
 import fr.paris.lutece.util.url.UrlItem;
 
-
 /**
  * SystemInfo Dashboard Component
  */
@@ -64,31 +63,39 @@ public class SystemInfoDashboardComponent extends DashboardComponent
 
     /**
      * The HTML code of the component
-     * @param user The Admin User
+     * 
+     * @param user  The Admin User
+     * @param request The HTTP request
+     * 
      * @return The dashboard component
      */
+    @Override
     public String getDashboardData( AdminUser user, HttpServletRequest request )
     {
-        Right right = RightHome.findByPrimaryKey( getRight(  ) );
-        Plugin plugin = PluginService.getPlugin( right.getPluginName(  ) );
-        UrlItem url = new UrlItem( right.getUrl(  ) );
-        url.addParameter( PLUGIN_NAME, right.getPluginName(  ) );
+        Right right = RightHome.findByPrimaryKey( getRight( ) );
+        Plugin plugin = PluginService.getPlugin( right.getPluginName( ) );
+        UrlItem url = new UrlItem( right.getUrl( ) );
+        url.addParameter( PLUGIN_NAME, right.getPluginName( ) );
 
-        Map<String, Object> model = new HashMap<String, Object>(  );
-        model.put( MARK_MEMORY, getMemory(  ) );
-        model.put( MARK_CONNECTIONS, AppConnectionService.getPoolManager(  ).getPoolsInfos(  ) );
-        model.put( MARK_URL, url.getUrl(  ) );
-        model.put( MARK_ICON, plugin.getIconUrl(  ) );
+        Map<String, Object> model = new HashMap<String, Object>( );
+        model.put( MARK_MEMORY, getMemory( ) );
+        model.put( MARK_CONNECTIONS, AppConnectionService.getPoolManager( ).getPoolsInfos( ) );
+        model.put( MARK_URL, url.getUrl( ) );
+        model.put( MARK_ICON, plugin.getIconUrl( ) );
 
-        HtmlTemplate t = AppTemplateService.getTemplate( TEMPLATE_DASHBOARD, user.getLocale(  ), model );
+        HtmlTemplate t = AppTemplateService.getTemplate( TEMPLATE_DASHBOARD, user.getLocale( ), model );
 
-        return t.getHtml(  );
+        return t.getHtml( );
     }
 
-    private String getMemory(  )
+    /**
+     * Get Memory information
+     * @return The Memory information
+     */
+    private String getMemory( )
     {
-        int nUsedMemory = (int) ( Runtime.getRuntime(  ).totalMemory(  ) / 1000000L );
-        int nMaxMemory = (int) ( Runtime.getRuntime(  ).maxMemory(  ) / 1000000L );
+        int nUsedMemory = (int) ( Runtime.getRuntime( ).totalMemory( ) / 1000000L );
+        int nMaxMemory = (int) ( Runtime.getRuntime( ).maxMemory( ) / 1000000L );
 
         return "" + nUsedMemory + " / " + nMaxMemory;
     }

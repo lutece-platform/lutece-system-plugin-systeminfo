@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2016, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,10 +47,9 @@ import java.util.Properties;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
-
 public class SystemInfoJspBean extends PluginAdminPageJspBean
 {
-    /////////////////////////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////////////////////////
     // Constants
 
     // Right
@@ -78,7 +77,7 @@ public class SystemInfoJspBean extends PluginAdminPageJspBean
     private static final String MARK_STARTUP_DATE = "startup_date";
     private static final String MARK_CONTAINER_INFO = "container_info";
 
-    //Properties
+    // Properties
     private static final String PROPERTY_JAVA_VERSION = "java.version";
     private static final String PROPERTY_JAVA_VENDOR = "java.vendor";
     private static final String PROPERTY_JAVA_VM_SPECIFICATION_VERSION = "java.vm.specification.version";
@@ -99,14 +98,17 @@ public class SystemInfoJspBean extends PluginAdminPageJspBean
     /**
      * Get informations from system
      *
-     * @param request The Http request
+     * @param request
+     *            The Http request
+     * @param application
+     *            The application servlet context
      * @return the html code of information system
      */
     public String getSystemInfo( HttpServletRequest request, ServletContext application )
     {
-        Properties properties = System.getProperties(  );
+        Properties properties = System.getProperties( );
 
-        HashMap model = new HashMap(  );
+        HashMap model = new HashMap( );
         model.put( MARK_JAVA_VERSION, properties.getProperty( PROPERTY_JAVA_VERSION ) );
         model.put( MARK_JAVA_VENDOR, properties.getProperty( PROPERTY_JAVA_VENDOR ) );
         model.put( MARK_JAVA_VM_SPECIFICATION_VERSION, properties.getProperty( PROPERTY_JAVA_VM_SPECIFICATION_VERSION ) );
@@ -120,37 +122,44 @@ public class SystemInfoJspBean extends PluginAdminPageJspBean
         model.put( MARK_JAVA_SPECIFICATION_NAME, properties.getProperty( PROPERTY_JAVA_SPECIFICATION_NAME ) );
         model.put( MARK_OS_NAME, properties.getProperty( PROPERTY_OS_NAME ) );
         model.put( MARK_OS_VERSION, properties.getProperty( PROPERTY_OS_VERSION ) );
-        model.put( MARK_TOTAL_MEMORY, Runtime.getRuntime(  ).totalMemory(  ) );
-        model.put( MARK_FREE_MEMORY, Runtime.getRuntime(  ).freeMemory(  ) );
-        model.put( MARK_MAX_MEMORY, Runtime.getRuntime(  ).maxMemory(  ) );
+        model.put( MARK_TOTAL_MEMORY, Runtime.getRuntime( ).totalMemory( ) );
+        model.put( MARK_FREE_MEMORY, Runtime.getRuntime( ).freeMemory( ) );
+        model.put( MARK_MAX_MEMORY, Runtime.getRuntime( ).maxMemory( ) );
 
-        model.put( MARK_STARTUP_DATE,  getStartupDate() );
-        
-        model.put( MARK_POOLS_INFOS, AppConnectionService.getPoolManager(  ).getPoolsInfos(  ) );
+        model.put( MARK_STARTUP_DATE, getStartupDate( ) );
 
-        model.put( MARK_JAVA_VM_DEFAULT_CHARSET, Charset.defaultCharset().toString());
+        model.put( MARK_POOLS_INFOS, AppConnectionService.getPoolManager( ).getPoolsInfos( ) );
 
-        model.put( MARK_CONTAINER_INFO, application.getServerInfo() );
+        model.put( MARK_JAVA_VM_DEFAULT_CHARSET, Charset.defaultCharset( ).toString( ) );
 
-        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_MANAGE_SYSTEMINFO, getLocale(  ), model );
+        model.put( MARK_CONTAINER_INFO, application.getServerInfo( ) );
 
-        return getAdminPage( template.getHtml(  ) );
+        HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_MANAGE_SYSTEMINFO, getLocale( ), model );
+
+        return getAdminPage( template.getHtml( ) );
     }
 
     /**
      * Modification of system memory with a garbage collector
-     * @param request The Http request
+     * 
+     * @param request
+     *            The Http request
      * @return The Jsp URL of the process result
      */
     public String doGarbageCollector( HttpServletRequest request )
     {
-        System.gc(  );
+        System.gc( );
 
         return getHomeUrl( request );
     }
-    
-    private String getStartupDate()
+
+    /**
+     * Gets the startup date log
+     * 
+     * @return the startup date log
+     */
+    private String getStartupDate( )
     {
-        return DatastoreService.getDataValue(CoreDataKeys.KEY_STARTUP_TIME, "");
+        return DatastoreService.getDataValue( CoreDataKeys.KEY_STARTUP_TIME, "" );
     }
 }
