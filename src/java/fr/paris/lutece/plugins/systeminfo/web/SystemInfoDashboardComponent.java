@@ -56,6 +56,7 @@ public class SystemInfoDashboardComponent extends DashboardComponent
 {
     private static final String TEMPLATE_DASHBOARD = "/admin/plugins/systeminfo/systeminfo_dashboard.html";
     private static final String MARK_MEMORY = "memory";
+    private static final String MARK_MAX_MEMORY = "max_memory";
     private static final String MARK_CONNECTIONS = "connections";
     private static final String MARK_URL = "url";
     private static final String MARK_ICON = "icon";
@@ -79,6 +80,7 @@ public class SystemInfoDashboardComponent extends DashboardComponent
 
         Map<String, Object> model = new HashMap<String, Object>( );
         model.put( MARK_MEMORY, getMemory( ) );
+        model.put( MARK_MAX_MEMORY, getMaxMemory( ) );
         model.put( MARK_CONNECTIONS, AppConnectionService.getPoolManager( ).getPoolsInfos( ) );
         model.put( MARK_URL, url.getUrl( ) );
         model.put( MARK_ICON, plugin.getIconUrl( ) );
@@ -95,8 +97,16 @@ public class SystemInfoDashboardComponent extends DashboardComponent
     private String getMemory( )
     {
         int nUsedMemory = (int) ( Runtime.getRuntime( ).totalMemory( ) / 1000000L );
-        int nMaxMemory = (int) ( Runtime.getRuntime( ).maxMemory( ) / 1000000L );
+        return " " + nUsedMemory;
+    }
 
-        return "" + nUsedMemory + " / " + nMaxMemory;
+    /**
+     * Get Total Memory information
+     * @return The Total Memory information
+     */
+    private String getMaxMemory( )
+    {
+        int nMaxMemory = (int) ( Runtime.getRuntime( ).maxMemory( ) / 1000000L );
+        return " " + nMaxMemory;
     }
 }
