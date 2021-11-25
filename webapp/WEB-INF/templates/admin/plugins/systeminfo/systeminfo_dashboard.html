@@ -1,25 +1,7 @@
-<div class="info-box bg-red box-widget">
-  <span class="info-box-icon"><i class="fa fa-tasks"></i></span>
-  <div class="info-box-content">
-    <span class="info-box-text">#i18n{systeminfo.systeminfo_dashboard.memory}</span>
-    <span class="info-box-number">${memory}</span>
-    <div class="progress">
-      <div class="progress-bar" style="width:0%"></div>
-    </div>
-    <span class="progress-description">#i18n{systeminfo.systeminfo_dashboard.memory}</span>
-  </div>
-</div>
-<div class="info-box bg-red box-widget">
-  <span class="info-box-icon"><i class="fa fa-database"></i></span>
-  <div class="info-box-content">
-    	<#list connections as connection>
-				<span class="info-box-text">  ${connection.name}</span>
-				<span class="info-box-number">${connection.code}</span>
-			</#list>
-		</span>
-
-    <span class="progress-description">
-		  #i18n{systeminfo.systeminfo_dashboard.connections}
-    </span>
-  </div>
-</div>
+<@infoBox  boxIcon='tasks' boxNumber=memory  params=' data-id="memory_dashboard"' boxText='#i18n{systeminfo.systeminfo_dashboard.memory}' bgColor='has-background-info bg-info' progressBar=max_memory />
+<@infoBox  boxIcon='database' params=' data-id="connections_dashboard"' boxText='#i18n{systeminfo.systeminfo_dashboard.connections}'  bgColor='has-background-warning bg-warning'  >
+<#list connections as connection>
+<strong class="info-box-text">  ${connection.name}</strong>
+<small class="info-box-number">${connection.code}</small>
+</#list>
+</@infoBox>

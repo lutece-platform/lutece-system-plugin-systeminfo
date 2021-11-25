@@ -1,124 +1,117 @@
-<#setting number_format="#0.00"/>        
-<div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-12">
-		<div class="box box-danger">
-			<div class="box-header">
-				<h3 class="box-title">#i18n{systeminfo.manage_systeminfo.tableTitle.system}</h3>
-				<div class="box-tools pull-right">
-					<form class="form-inline" method="post" name="MyForm" action="jsp/admin/plugins/systeminfo/DoGarbageCollector.jsp" >
-						<button class="btn btn-primary btn-xs btn-flat" type=submit> 
-							<i class="glyphicon glyphicon-refresh"></i>
-							#i18n{systeminfo.manage_systeminfo.buttonDoGarbageCollector}
-						</button>
-					</form>
-				</div>
-			</div>
-			<div class="box-body">	
-				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-6">
-						<table class="table table-hover table-condensed">
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.java.version} </td>
-								<td> ${java_version}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.java.vendor} </td>
-								<td> ${java_vendor}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.java.vm.specification.version} </td>
-								<td> ${java_vm_specification_version}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.java.vm.specification.vendor} </td>
-								<td> ${java_vm_specification_vendor}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.java.vm.specification.name} </td>
-								<td> ${java_vm_specification_name}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.java.vm.version} </td>
-								<td> ${java_vm_version}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.java.vm.vendor} </td>
-								<td> ${java_vm_vendor}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.java.vm.name} </td>
-								<td> ${java_vm_name}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.java.vm.defaultCharset} </td>
-								<td> ${java_vm_default_charset}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.java.specification.version} </td>
-								<td> ${java_specification_version}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.java.specification.vendor} </td>
-								<td> ${java_specification_vendor}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.java.specification.name} </td>
-								<td> ${java_specification_name}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.os.name} </td>
-								<td> ${os_name}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.os.version} </td>
-								<td> ${os_version}</td>
-							</tr>
-							<tr>
-								<td> #i18n{systeminfo.manage_systeminfo.label.container.info} </td>
-								<td> ${container_info}</td>
-							</tr>
 
-						</table>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-6">
-						<div class="callout callout-info">
-							<i class="glyphicon glyphicon-info-sign"></i>
-							#i18n{systeminfo.manage_systeminfo.startupDate} ${startup_date}
-						</div>
-						
-						<legend>#i18n{systeminfo.manage_systeminfo.tableTitle.pool}</legend>
-						<table class="table table-hover table-condensed">
-							<tr>
-								<th>#i18n{systeminfo.manage_systeminfo.label.pool}</td>
-								<th>#i18n{systeminfo.manage_systeminfo.label.connectionsCount}</td>
-							</tr>
-							<#list pools_list as pool>
-							<tr>
-								<td> ${pool.code} </td>
-								<td> ${pool.name} </td>
-							</tr>
-							</#list>
-						</table>
-		
-						<legend>#i18n{systeminfo.manage_systeminfo.tableTitle.memory}</legend>
-							<table class="table table-hover table-condensed">
-									<tr>
-										<td> #i18n{systeminfo.manage_systeminfo.label.runtime.totalMemory} </td>
-										<td> ${runtime_totalMemory/1048576} Mo</td>
-									</tr>
-									<tr>
-										<td> #i18n{systeminfo.manage_systeminfo.label.runtime.freeMemory} </td>
-										<td> ${runtime_freeMemory/1048576} Mo</td>
-									</tr>
-									<tr>
-										<td> #i18n{systeminfo.manage_systeminfo.label.runtime.maxMemory} </td>
-										<td> ${runtime_maxMemory/1048576} Mo</td>
-									</tr>
-							</table>
-							
-					</div>
-				</div>
-			</div>
-		</div>
-    </div>
-</div>
+<@row>
+	<@columns>
+		<@box color='info'>
+			<@boxHeader title='#i18n{systeminfo.manage_systeminfo.tableTitle.system}' skipHeader=true boxTools=true>
+				<@tform method='post' type='inline' align='right' action='jsp/admin/plugins/systeminfo/DoGarbageCollector.jsp'>
+					<@button type='submit' buttonIcon='refresh' title='#i18n{systeminfo.manage_systeminfo.buttonDoGarbageCollector}' size='sm' />
+				</@tform>
+			</@boxHeader>
+			<@boxBody>     
+			<@row>
+				<@columns sm=6>
+					<@table>
+						<@tableHeadBodySeparator />
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.java.version} </@td>
+							<@td> ${java_version}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vendor} </@td>
+							<@td> ${java_vendor}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.specification.version} </@td>
+							<@td> ${java_vm_specification_version}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.specification.vendor} </@td>
+							<@td> ${java_vm_specification_vendor}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.specification.name} </@td>
+							<@td> ${java_vm_specification_name}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.version} </@td>
+							<@td> ${java_vm_version}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.vendor} </@td>
+							<@td> ${java_vm_vendor}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.name} </@td>
+							<@td> ${java_vm_name}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.defaultCharset} </@td>
+							<@td> ${java_vm_default_charset}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.java.specification.version} </@td>
+							<@td> ${java_specification_version}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.java.specification.vendor} </@td>
+							<@td> ${java_specification_vendor}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.java.specification.name} </@td>
+							<@td> ${java_specification_name}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.os.name} </@td>
+							<@td> ${os_name}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.os.version} </@td>
+							<@td> ${os_version}</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.container.info} </@td>
+							<@td> ${container_info}</@td>
+						</@tr>
+					</@table>
+				</@columns>
+				<@columns sm=6>
+					<@callOut color='info' callOutIcon='info-circle' title='#i18n{systeminfo.manage_systeminfo.startupDate} <strong>${startup_date}</strong>' />
+					<@table caption='#i18n{systeminfo.manage_systeminfo.tableTitle.pool}'>
+						<@tr>
+							<@th>#i18n{systeminfo.manage_systeminfo.label.pool}</@th>
+							<@th>#i18n{systeminfo.manage_systeminfo.label.connectionsCount}</@th>
+						</@tr>
+						<@tableHeadBodySeparator />
+						<#list pools_list as pool>
+						<@tr>
+							<@td> ${pool.code} </@td>
+							<@td> ${pool.name} </@td>
+						</@tr>
+						</#list>
+					</@table>
+					<#setting number_format="#0.00"/> 
+					<@table caption='#i18n{systeminfo.manage_systeminfo.tableTitle.memory}'>
+						<@tr>
+							<@th>#i18n{systeminfo.manage_systeminfo.label.pool}</@th>
+							<@th>#i18n{systeminfo.manage_systeminfo.label.connectionsCount}</@th>
+						</@tr>
+						<@tableHeadBodySeparator />
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.runtime.totalMemory} </@td>
+							<@td> ${runtime_totalMemory/1048576} Mo</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.runtime.freeMemory} </@td>
+							<@td> ${runtime_freeMemory/1048576} Mo</@td>
+						</@tr>
+						<@tr>
+							<@td> #i18n{systeminfo.manage_systeminfo.label.runtime.maxMemory} </@td>
+							<@td> ${runtime_maxMemory/1048576} Mo</@td>
+						</@tr>
+					</@table>
+				</@columns>
+			</@row>
+			</@boxBody>
+		</@box>
+	</@columns>
+</@row>
