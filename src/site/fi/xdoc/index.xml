@@ -7,7 +7,7 @@
         <section name="Plugin systeminfo">
             <subsection name="Introduction">
                 <p>
-                    Ce plugin fournit des informations sur l'environnement de d'exécution telles que les versions d'OS ou de JVM.
+                    This plugin provides informations about the system such as OS or JVM versions.
                 </p>
                 <p>
                     <img src="images/systeminfo.png"/>
