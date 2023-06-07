@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
     <properties>
-        <title>Plugin systeminfo</title>
+        <title>Plugin</title>
     </properties>
     <body>
         <section name="Plugin systeminfo">
@@ -10,7 +10,7 @@
                     Ce plugin fournit des informations sur l'environnement de d'exécution telles que les versions d'OS ou de JVM.
                 </p>
                 <p>
-                    <img src="images/systeminfo.png" />
+                    <img src="images/systeminfo.png"/>
                 </p>
             </subsection>
         </section>
