@@ -42,15 +42,21 @@ import fr.paris.lutece.util.html.HtmlTemplate;
 
 import java.nio.charset.Charset;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
 
+@RequestScoped
+@Named
 public class SystemInfoJspBean extends PluginAdminPageJspBean
 {
     // ///////////////////////////////////////////////////////////////////////////////////////
     // Constants
+    private static final long serialVersionUID = -8868381196099710585L;
 
     // Right
     public static final String RIGHT_SYSTEMINFO_MANAGEMENT = "SYSTEMINFO_MANAGEMENT";
@@ -104,11 +110,12 @@ public class SystemInfoJspBean extends PluginAdminPageJspBean
      *            The application servlet context
      * @return the html code of information system
      */
-    public String getSystemInfo( HttpServletRequest request, ServletContext application )
+    public String getSystemInfo( HttpServletRequest request )
     {
         Properties properties = System.getProperties( );
+        ServletContext application = request.getServletContext( );
 
-        HashMap model = new HashMap( );
+        Map<String, Object> model = new HashMap<>( );
         model.put( MARK_JAVA_VERSION, properties.getProperty( PROPERTY_JAVA_VERSION ) );
         model.put( MARK_JAVA_VENDOR, properties.getProperty( PROPERTY_JAVA_VENDOR ) );
         model.put( MARK_JAVA_VM_SPECIFICATION_VERSION, properties.getProperty( PROPERTY_JAVA_VM_SPECIFICATION_VERSION ) );
