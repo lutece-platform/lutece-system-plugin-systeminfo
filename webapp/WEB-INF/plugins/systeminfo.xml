@@ -3,7 +3,7 @@
    <!-- Plugin Informations -->
     <name>systeminfo</name>
     <class>fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation</class>
-    <version>3.1.6-beta-01</version>
+    <version>3.1.6-SNAPSHOT</version>
     <description>systeminfo.plugin.description</description>
     <documentation/>
     <installation/>
