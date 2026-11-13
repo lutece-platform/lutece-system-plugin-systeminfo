@@ -1,5 +1,5 @@
-<@infoBox  boxIcon='tasks' boxNumber=memory  params=' data-id="memory_dashboard"' boxText='#i18n{systeminfo.systeminfo_dashboard.memory}' bgColor='has-background-info bg-info' progressBar=max_memory />
-<@infoBox  boxIcon='database' params=' data-id="connections_dashboard"' boxText='#i18n{systeminfo.systeminfo_dashboard.connections}'  bgColor='has-background-warning bg-warning'  >
+<@infoBox  boxIcon='tasks' boxNumber=memory  params={"data-id": "memory_dashboard"} boxText='#i18n{systeminfo.systeminfo_dashboard.memory}' bgColor='has-background-info bg-info' progressBar=max_memory />
+<@infoBox  boxIcon='database' params={"data-id": "connections_dashboard"} boxText='#i18n{systeminfo.systeminfo_dashboard.connections}'  bgColor='has-background-warning bg-warning'  >
 <#list connections as connection>
 <strong class="info-box-text">  ${connection.name}</strong>
 <small class="info-box-number">${connection.code}</small>
