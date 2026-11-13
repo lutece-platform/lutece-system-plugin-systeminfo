@@ -11,72 +11,71 @@
 			<@row>
 				<@columns sm=6>
 					<@table>
-						<@tableHeadBodySeparator />
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.java.version} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.java.version}</@th>
 							<@td> ${java_version}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vendor} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.java.vendor}</@th>
 							<@td> ${java_vendor}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.specification.version} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.java.vm.specification.version}</@th>
 							<@td> ${java_vm_specification_version}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.specification.vendor} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.java.vm.specification.vendor}</@th>
 							<@td> ${java_vm_specification_vendor}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.specification.name} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.java.vm.specification.name}</@th>
 							<@td> ${java_vm_specification_name}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.version} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.java.vm.version}</@th>
 							<@td> ${java_vm_version}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.vendor} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.java.vm.vendor}</@th>
 							<@td> ${java_vm_vendor}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.name} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.java.vm.name}</@th>
 							<@td> ${java_vm_name}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.java.vm.defaultCharset} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.java.vm.defaultCharset}</@th>
 							<@td> ${java_vm_default_charset}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.java.specification.version} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.java.specification.version}</@th>
 							<@td> ${java_specification_version}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.java.specification.vendor} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.java.specification.vendor}</@th>
 							<@td> ${java_specification_vendor}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.java.specification.name} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.java.specification.name}</@th>
 							<@td> ${java_specification_name}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.os.name} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.os.name}</@th>
 							<@td> ${os_name}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.os.version} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.os.version}</@th>
 							<@td> ${os_version}</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.container.info} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.container.info}</@th>
 							<@td> ${container_info}</@td>
 						</@tr>
 					</@table>
 				</@columns>
 				<@columns sm=6>
 					<@callOut color='info' callOutIcon='info-circle' title='#i18n{systeminfo.manage_systeminfo.startupDate} ${startup_date}' />
-					<@table caption='#i18n{systeminfo.manage_systeminfo.tableTitle.pool}'>
+					<@table headBody=true caption='#i18n{systeminfo.manage_systeminfo.tableTitle.pool}'>
 						<@tr>
 							<@th>#i18n{systeminfo.manage_systeminfo.label.pool}</@th>
 							<@th>#i18n{systeminfo.manage_systeminfo.label.connectionsCount}</@th>
@@ -90,22 +89,22 @@
 						</#list>
 					</@table>
 					<#setting number_format="#0.00"/> 
-					<@table caption='#i18n{systeminfo.manage_systeminfo.tableTitle.memory}'>
+					<@table headBody=true caption='#i18n{systeminfo.manage_systeminfo.tableTitle.memory}'>
 						<@tr>
-							<@th>#i18n{systeminfo.manage_systeminfo.label.pool}</@th>
-							<@th>#i18n{systeminfo.manage_systeminfo.label.connectionsCount}</@th>
+							<@th>#i18n{systeminfo.manage_systeminfo.label.memory}</@th>
+							<@th>#i18n{systeminfo.manage_systeminfo.label.size}</@th>
 						</@tr>
 						<@tableHeadBodySeparator />
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.runtime.totalMemory} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.runtime.totalMemory}</@th>
 							<@td> ${runtime_totalMemory/1048576} Mo</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.runtime.freeMemory} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.runtime.freeMemory}</@th>
 							<@td> ${runtime_freeMemory/1048576} Mo</@td>
 						</@tr>
 						<@tr>
-							<@td> #i18n{systeminfo.manage_systeminfo.label.runtime.maxMemory} </@td>
+							<@th scope='row'>#i18n{systeminfo.manage_systeminfo.label.runtime.maxMemory}</@th>
 							<@td> ${runtime_maxMemory/1048576} Mo</@td>
 						</@tr>
 					</@table>
